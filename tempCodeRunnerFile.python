@@ -1,0 +1,41 @@
+
+def insertion_sort(arr, order='ascending'):
+    n = len(arr)
+    for i in range(1, n):
+        key = arr[i]
+        j = i - 1
+        while j >= 0 and (arr[j] > key if order == 'ascending' else arr[j] < key):
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key
+
+def main():
+    arr = []
+
+    while True:
+        print("\n1. Insert elements into the array")
+        print("2. Sort the array in ascending order")
+        print("3. Sort the array in descending order")
+        print("4. Display the array")
+        print("5. Exit")
+
+        choice = input("\nEnter your choice: ")
+
+        if choice == '1':
+            n = int(input("Enter the number of elements: "))
+            print("Enter the elements:")
+            arr = list(map(int, input().split()))
+        elif choice == '2':
+            insertion_sort(arr, 'ascending')
+            print("Array sorted in ascending order:", arr)
+        elif choice == '3':
+            insertion_sort(arr, 'descending')
+            print("Array sorted in descending order:", arr)
+        elif choice == '4':
+            print("Array:", arr)
+        elif choice == '5':
+            print("Exiting...")
+            break
+        else:
+            print("Invalid choice. Please enter a valid option.")
+
